@@ -14,13 +14,13 @@ public class Padrone {
     @Id
     @Column(name = "padrone_id")
     @SequenceGenerator(
-            name = "student_sequence",
+            name = "padrone_sequence_generator",
             sequenceName = "padrone_sequence",
             allocationSize = 1
     )
     @GeneratedValue(
             strategy = GenerationType.SEQUENCE,
-            generator = "padrone_sequence"
+            generator = "padrone_sequence_generator"
     )
     private int id;
     private String nome;
