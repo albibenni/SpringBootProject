@@ -5,6 +5,7 @@ import com.albi.springBootProject.service.PadroneService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 @RestController
@@ -39,5 +40,23 @@ public class PadroneController {
     @PostMapping("insert")
     public void postPadrone(@RequestBody Padrone padrone){
         padroneService.postPadrone(padrone);
+    }
+
+    @GetMapping("byCognome/{cognome}")
+    public void getPadroneByCognome(@PathVariable("cognome") String cognome){
+        padroneService.getPadroneByCognome(cognome);
+    }
+
+    @PutMapping("update/{padroneId}")
+    public void updatePadrone(
+            @RequestBody Padrone padrone,
+            @PathVariable("padroneId") int padroneId
+    ){
+        padroneService.updatePadrone(padroneId, padrone);
+    }
+
+    @DeleteMapping("delete/{padroneId}")
+    public void deleteStudent(@PathVariable("padroneId") int id){
+        padroneService.deleteStudent(id);
     }
 }
